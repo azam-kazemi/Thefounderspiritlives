@@ -5,9 +5,31 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="روح بنیان‌گذار؛ روایت اندیشه، ساختن، خلاقیت و مسیری که ادامه دارد.">
   <title>The Founder</title>
-  <link rel="stylesheet" href="style.css?v=20260930-6">
+  <link rel="preload" as="image" href="assets/images/hero-portrait.jpg">
+  <link rel="preload" as="image" href="assets/images/hero-background.jpg">
+  <link rel="stylesheet" href="style.css?v=20260930-7">
 </head>
-<body>
+<body class="intro-lock">
+  <div class="intro-loader" aria-hidden="true">
+    <div class="intro-loader-mark">
+      <img src="assets/mark.svg" alt="">
+    </div>
+
+    <div class="intro-loader-stage">
+      <figure class="intro-polaroid">
+        <div class="intro-photo">
+          <img src="assets/images/hero-portrait.jpg" alt="">
+        </div>
+        <div class="intro-polaroid-bottom"></div>
+      </figure>
+
+      <div class="intro-copy">
+        <div class="intro-title">روح بنیان‌گذار</div>
+        <div class="intro-subtitle">عشق و امید، ساختن غیرممکن‌ها</div>
+      </div>
+    </div>
+  </div>
+
 
   <header class="cover" id="home">
     <nav class="topbar" aria-label="ناوبری اصلی">
@@ -94,6 +116,6 @@
     <span class="latin">thefounderspiritlives.com</span>
   </footer>
 
-  <script src="script.js?v=20260930-3"></script>
+  <script src="script.js?v=20260930-4"></script>
 </body>
 </html>
