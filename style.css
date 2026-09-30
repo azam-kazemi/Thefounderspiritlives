@@ -39,22 +39,150 @@ a{color:inherit;text-decoration:none}
 .topbar{
   position:absolute;
   inset:0 0 auto 0;
-  z-index:4;
+  z-index:6;
   display:flex;
   align-items:center;
   justify-content:space-between;
   padding:28px var(--pad);
 }
-.brand-mark{width:34px;color:#fff;opacity:.95}
-.brand-mark img{width:100%;filter:brightness(0) invert(1)}
-.topnav{
-  display:flex;
-  gap:34px;
-  font-size:.83rem;
-  color:rgba(255,255,255,.85)
+.brand-mark{
+  width:34px;
+  color:#fff;
+  opacity:.95;
+  order:2;
 }
-.topnav a{transition:opacity .25s}
-.topnav a:hover{opacity:.55}
+.brand-mark img{width:100%;filter:brightness(0) invert(1)}
+
+.nav-controls{
+  display:flex;
+  align-items:center;
+  gap:28px;
+  order:1;
+  font-size:.9rem;
+  color:rgba(255,255,255,.92);
+}
+.home-link{
+  position:relative;
+  padding-bottom:4px;
+}
+.home-link::after{
+  content:"";
+  position:absolute;
+  right:0;
+  bottom:0;
+  width:100%;
+  height:1px;
+  background:currentColor;
+  opacity:.45;
+}
+.menu-trigger,.menu-close{
+  appearance:none;
+  border:0;
+  padding:0;
+  margin:0;
+  background:none;
+  color:inherit;
+  font:inherit;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+.menu-trigger-icon,
+.menu-close-icon{
+  position:relative;
+  width:18px;
+  height:18px;
+  display:inline-block;
+}
+.menu-trigger-icon::before,
+.menu-trigger-icon::after,
+.menu-close-icon::before,
+.menu-close-icon::after{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:0;
+  width:18px;
+  height:1px;
+  background:currentColor;
+  transform-origin:center;
+}
+.menu-trigger-icon::after{transform:rotate(90deg)}
+.menu-close-icon::before{transform:rotate(45deg)}
+.menu-close-icon::after{transform:rotate(-45deg)}
+
+.site-menu{
+  position:fixed;
+  inset:0;
+  z-index:20;
+  background:#f3eee5;
+  color:#171713;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(-14px);
+  transition:opacity .35s ease,transform .35s ease,visibility .35s step-end;
+}
+.site-menu.is-open{
+  opacity:1;
+  visibility:visible;
+  transform:none;
+  transition:opacity .35s ease,transform .35s ease,visibility 0s;
+}
+.site-menu-inner{
+  min-height:100svh;
+  padding:28px var(--pad) 32px;
+  display:flex;
+  flex-direction:column;
+}
+.site-menu-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.menu-close{font-size:.9rem}
+.menu-brand{width:34px}
+.menu-brand img{width:100%;filter:none}
+
+.menu-links{
+  width:100%;
+  margin:auto 0;
+  border-top:1px solid rgba(18,18,18,.22);
+}
+.menu-links a{
+  display:grid;
+  grid-template-columns:62px 1fr;
+  align-items:center;
+  min-height:102px;
+  border-bottom:1px solid rgba(18,18,18,.22);
+  transition:opacity .2s ease,padding-right .25s ease;
+}
+.menu-links a:hover{
+  opacity:.62;
+  padding-right:10px;
+}
+.menu-links a > span:last-child{
+  font-family:"Noto Serif Arabic","Noto Naskh Arabic",serif;
+  font-size:clamp(2.1rem,5vw,5.2rem);
+  line-height:1.2;
+  font-weight:600;
+}
+.menu-no{
+  direction:ltr;
+  font-size:.72rem;
+  color:#746f67;
+  align-self:start;
+  padding-top:28px;
+}
+.site-menu-foot{
+  display:flex;
+  justify-content:space-between;
+  gap:24px;
+  padding-top:26px;
+  font-size:.75rem;
+  color:#6f6a62;
+}
+body.menu-open{overflow:hidden}
 
 .cover-inner{
   width:min(100% - 2*var(--pad),980px);
@@ -259,8 +387,11 @@ footer{
 }
 
 @media(max-width:850px){
-  .topnav{display:none}
   .topbar{padding-top:22px}
+  .nav-controls{gap:18px;font-size:.86rem}
+  .site-menu-inner{padding-top:22px}
+  .menu-links a{min-height:88px;grid-template-columns:48px 1fr}
+  .menu-no{padding-top:22px}
   .cover-inner{padding-top:80px}
   .polaroid{width:min(72vw,330px);background:#fff !important}
   .polaroid-photo{background:#fff !important}
@@ -286,6 +417,10 @@ footer{
   .polaroid-bottom{height:55px}
   .copy h2{font-size:3.35rem}
   .copy h3{font-size:1.28rem}
+  .home-link{display:none}
+  .menu-links a{min-height:78px}
+  .menu-links a > span:last-child{font-size:2.45rem}
+  .site-menu-foot{flex-direction:column;gap:8px}
   footer{flex-direction:column}
 }
 @media(prefers-reduced-motion:reduce){
