@@ -1,87 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const prefersReducedMotion =
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const items = document.querySelectorAll(".editorial,.statement,.full-image,.dark-quote");
 
-  document.body.classList.add("is-ready");
-
-  const revealElements = document.querySelectorAll(
-    ".section, .image-section, .closing"
-  );
-
-  if (prefersReducedMotion) {
-    revealElements.forEach((el) => {
-      el.classList.add("reveal", "is-visible");
-    });
-    return;
-  }
-
-  revealElements.forEach((element) => {
-    element.classList.add("reveal");
-  });
-
-  const revealObserver = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
+  if (!reduce && "IntersectionObserver" in window) {
+    items.forEach(el => el.classList.add("reveal"));
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
+          entry.target.classList.add("visible");
+          io.unobserve(entry.target);
         }
       });
-    },
-    {
-      threshold: 0.12,
-      rootMargin: "0px 0px -8% 0px"
-    }
-  );
+    }, { threshold: .12, rootMargin: "0px 0px -8% 0px" });
+    items.forEach(el => io.observe(el));
+  }
 
-  revealElements.forEach((element) => {
-    revealObserver.observe(element);
-  });
-
-  document.querySelectorAll('a[href^="#"]').forEach((link) => {
-    link.addEventListener("click", (event) => {
-      const targetId = link.getAttribute("href");
-      if (!targetId || targetId === "#") return;
-
-      const target = document.querySelector(targetId);
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener("click", e => {
+      const target = document.querySelector(a.getAttribute("href"));
       if (!target) return;
-
-      event.preventDefault();
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
+      e.preventDefault();
+      target.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
     });
   });
-
-  const heroImage = document.querySelector(".hero__image");
-  if (heroImage) {
-    window.addEventListener(
-      "scroll",
-      () => {
-        const scrollY = window.scrollY;
-        if (scrollY <= window.innerHeight) {
-          const movement = scrollY * 0.08;
-          heroImage.style.transform =
-            `scale(1.035) translateY(${movement}px)`;
-        }
-      },
-      { passive: true }
-    );
-  }
-
-  const nav = document.querySelector(".nav");
-  if (nav) {
-    window.addEventListener(
-      "scroll",
-      () => {
-        if (window.scrollY > 40) {
-          nav.classList.add("nav--scrolled");
-        } else {
-          nav.classList.remove("nav--scrolled");
-        }
-      },
-      { passive: true }
-    );
-  }
 });
