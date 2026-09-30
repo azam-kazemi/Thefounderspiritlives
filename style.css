@@ -262,7 +262,9 @@ footer{
   .topnav{display:none}
   .topbar{padding-top:22px}
   .cover-inner{padding-top:80px}
-  .polaroid{width:min(72vw,330px)}
+  .polaroid{width:min(72vw,330px);background:#fff !important}
+  .polaroid-photo{background:#fff !important}
+  .polaroid-bottom{background:#fff !important}
   .polaroid-bottom{height:65px}
   .editorial,.editorial-reverse{
     grid-template-columns:1fr;
