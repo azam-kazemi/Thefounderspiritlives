@@ -26,9 +26,12 @@ a{color:inherit;text-decoration:none}
   min-height:100svh;
   position:relative;
   color:#fff;
-  background:
-    radial-gradient(circle at 50% 30%,rgba(255,255,255,.055),transparent 30%),
-    linear-gradient(180deg,#4a4947 0%,#383735 100%);
+
+  background-image:url("assets/images/hero-background.jpg");
+  background-size:cover;
+  background-position:center center;
+  background-repeat:no-repeat;
+
   overflow:hidden;
 }
 .topbar{
