@@ -29,7 +29,7 @@ a{color:inherit;text-decoration:none}
   position:relative;
   color:#fff;
 
-  background-image:url("assets/images/hero-background.jpg");
+  background-image:url("./assets/images/hero-background.jpg?v=20260930-2");
   background-size:cover;
   background-position:center center;
   background-repeat:no-repeat;
