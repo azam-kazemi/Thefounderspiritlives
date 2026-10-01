@@ -370,15 +370,15 @@ footer{
 .write-mask.line-7{top:88%;height:12%}
 
 .founder-letter.is-writing .write-mask{
-  animation:revealInk 1.55s cubic-bezier(.45,.05,.25,1) forwards;
+  animation:revealInk 2.6s cubic-bezier(.45,.05,.25,1) forwards;
 }
-.founder-letter.is-writing .line-1{animation-duration:1.55s;animation-delay:.25s}
-.founder-letter.is-writing .line-2{animation-duration:1.55s;animation-delay:1.70s}
-.founder-letter.is-writing .line-3{animation-duration:1.55s;animation-delay:3.15s}
-.founder-letter.is-writing .line-4{animation-duration:1.55s;animation-delay:4.60s}
-.founder-letter.is-writing .line-5{animation-duration:1.55s;animation-delay:6.05s}
-.founder-letter.is-writing .line-6{animation-duration:1.55s;animation-delay:7.50s}
-.founder-letter.is-writing .line-7{animation-duration:1.25s;animation-delay:8.95s}
+.founder-letter.is-writing .line-1{animation-duration:2.6s;animation-delay:.35s}
+.founder-letter.is-writing .line-2{animation-duration:2.6s;animation-delay:2.90s}
+.founder-letter.is-writing .line-3{animation-duration:2.6s;animation-delay:5.45s}
+.founder-letter.is-writing .line-4{animation-duration:2.6s;animation-delay:8.00s}
+.founder-letter.is-writing .line-5{animation-duration:2.6s;animation-delay:10.55s}
+.founder-letter.is-writing .line-6{animation-duration:2.6s;animation-delay:13.10s}
+.founder-letter.is-writing .line-7{animation-duration:2.0s;animation-delay:15.70s}
 
 @keyframes revealInk{
   from{width:100%}
