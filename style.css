@@ -317,79 +317,140 @@ footer{
   display:grid;
   place-items:center;
   background:#fff;
-  padding:72px var(--pad);
+  padding:82px var(--pad);
   overflow:hidden;
 }
 .letter-stage{
-  width:min(100%,1180px);
+  width:min(100%,1280px);
   margin:0 auto;
-  text-align:center;
 }
-.letter-kicker{
-  margin:0 0 8px;
-  color:#5f7cab;
-  font-size:clamp(.82rem,1.05vw,1rem);
-  font-weight:500;
-  letter-spacing:0;
+.letter-columns{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);
+  gap:clamp(46px,7vw,110px);
+  align-items:center;
+  direction:ltr;
 }
-.letter-svg{
+.letter-handwriting,
+.letter-typed{
+  min-width:0;
+}
+.letter-handwriting{
+  order:2;
+  direction:rtl;
+  overflow:hidden;
+}
+.letter-handwriting img{
   width:100%;
   height:auto;
   display:block;
-  margin:0 auto;
-  overflow:visible;
+  opacity:0;
+  clip-path:inset(0 0 0 100%);
+  transform:translateX(10px);
 }
-.letter-ink text{
-  fill:#4d78b7;
-  font-family:"Aref Ruqaa Ink","Noto Nastaliq Urdu","Noto Naskh Arabic","Vazirmatn",sans-serif;
-  font-size:52px;
+.founder-letter.is-writing .letter-handwriting img{
+  animation:handwriteReveal 5.8s cubic-bezier(.22,.61,.36,1) .15s forwards;
+}
+@keyframes handwriteReveal{
+  0%{
+    opacity:1;
+    clip-path:inset(0 0 0 100%);
+    transform:translateX(10px);
+  }
+  100%{
+    opacity:1;
+    clip-path:inset(0 0 0 0);
+    transform:none;
+  }
+}
+.letter-typed{
+  order:1;
+  direction:rtl;
+  text-align:right;
+  color:#4d78b7;
+}
+.letter-typed p{
+  margin:0;
+  font-size:clamp(1.15rem,1.55vw,1.5rem);
+  line-height:2.15;
   font-weight:400;
-  letter-spacing:.01em;
 }
-.ink-trace{
-  stroke-dasharray:1;
-  stroke-dashoffset:1;
+.letter-signature{
+  margin-top:34px;
+  display:flex;
+  justify-content:flex-start;
+  gap:.38em;
+  font-size:clamp(.98rem,1.15vw,1.15rem);
+  font-weight:500;
+  color:#4d78b7;
 }
-.founder-letter.is-writing .trace-1{
-  animation:writeTrace 2.35s cubic-bezier(.38,.05,.19,1) forwards;
+.letter-signature span{
+  opacity:0;
+  transform:translateY(7px);
 }
-.founder-letter.is-writing .trace-2{
-  animation:writeTrace 1.75s cubic-bezier(.38,.05,.19,1) 2.3s forwards;
+.founder-letter.is-writing .letter-signature span:first-child{
+  animation:signatureWord .7s ease 6.15s forwards;
 }
-.founder-letter.is-writing .trace-3{
-  animation:writeTrace 2.2s cubic-bezier(.38,.05,.19,1) 4s forwards;
+.founder-letter.is-writing .letter-signature span:last-child{
+  animation:signatureWord .7s ease 6.8s forwards;
 }
-@keyframes writeTrace{
-  to{stroke-dashoffset:0}
-}
-.letter-fallback{
-  display:none;
+@keyframes signatureWord{
+  to{opacity:1;transform:none}
 }
 
 @media(max-width:850px){
   .founder-letter{
-    min-height:88svh;
-    padding:56px 5vw 64px;
+    min-height:auto;
+    padding:64px 6vw 76px;
   }
-  .letter-stage{
-    width:min(100%,760px);
+  .letter-columns{
+    grid-template-columns:1fr;
+    gap:42px;
   }
-  .letter-kicker{
-    margin-bottom:4px;
-    font-size:.82rem;
+  .letter-handwriting{
+    order:1;
+  }
+  .letter-typed{
+    order:2;
+  }
+  .letter-handwriting img{
+    width:min(100%,720px);
+    margin:0 auto;
+  }
+  .letter-typed p{
+    font-size:1.08rem;
+    line-height:2.05;
+  }
+  .letter-signature{
+    margin-top:24px;
+    font-size:1rem;
   }
 }
 @media(max-width:520px){
   .founder-letter{
-    min-height:82svh;
-    padding:42px 4vw 56px;
+    padding:46px 5vw 58px;
   }
-  .letter-svg{
-    width:118%;
+  .letter-columns{
+    gap:32px;
+  }
+  .letter-handwriting img{
+    width:108%;
     max-width:none;
-    margin-right:-9%;
+    margin-right:-4%;
   }
-  .letter-ink text{
-    font-size:46px;
+  .letter-typed p{
+    font-size:1rem;
+    line-height:2;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .letter-handwriting img{
+    opacity:1;
+    clip-path:none;
+    transform:none;
+  }
+  .letter-signature span{
+    opacity:1;
+    transform:none;
   }
 }
