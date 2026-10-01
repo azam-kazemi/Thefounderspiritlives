@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.documentElement.classList.add("js-ready");\n\ndocument.addEventListener("DOMContentLoaded", () => {
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const items = document.querySelectorAll(".editorial,.statement,.full-image,.dark-quote");
 
