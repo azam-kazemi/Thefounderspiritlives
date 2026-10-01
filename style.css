@@ -159,13 +159,19 @@ a{color:inherit;text-decoration:none}
   font-size:clamp(1.3rem,2vw,2rem);
   line-height:1.7;
   font-weight:400;
-  color:#5d5954;
+  color:#2e2d2b;
 }
 .copy p{
   margin:38px 0 0;
   font-size:1.03rem;
   line-height:2.2;
-  color:#4d4944;
+  color:#2e2d2b;
+}
+.editorial .copy h2,
+.editorial .copy h3,
+.statement h3,
+.statement .statement-body{
+  color:#2e2d2b;
 }
 .text-link{
   display:inline-block;
