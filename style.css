@@ -346,44 +346,30 @@ footer{
   width:100%;
   height:auto;
   display:block;
+}
+
+/* The approved artwork stays untouched; only its visibility is animated. */
+.founder-letter-image{
   opacity:1;
-  visibility:visible;
-  clip-path:none;
+  filter:none;
   transform:none;
 }
-.write-mask{
-  display:none;
-  position:absolute;
-  left:0;
-  width:100%;
-  background:#fff;
-  z-index:2;
-  pointer-events:none;
+.js-ready .founder-letter-image{
+  opacity:0;
+  filter:blur(6px);
+  transform:translateY(10px);
+  transition:
+    opacity 3.2s ease,
+    filter 3.2s ease,
+    transform 3.2s ease;
+  will-change:opacity,filter,transform;
 }
-.js-ready .write-mask{display:block;}
-.write-mask.line-1{top:0;height:17%}
-.write-mask.line-2{top:16%;height:17%}
-.write-mask.line-3{top:32%;height:17%}
-.write-mask.line-4{top:47%;height:17%}
-.write-mask.line-5{top:62%;height:15%}
-.write-mask.line-6{top:76%;height:14%}
-.write-mask.line-7{top:88%;height:12%}
+.js-ready .founder-letter-image.is-visible{
+  opacity:1;
+  filter:blur(0);
+  transform:translateY(0);
+}
 
-.founder-letter.is-writing .write-mask{
-  animation:revealInk 2.6s cubic-bezier(.45,.05,.25,1) forwards;
-}
-.founder-letter.is-writing .line-1{animation-duration:2.6s;animation-delay:.35s}
-.founder-letter.is-writing .line-2{animation-duration:2.6s;animation-delay:2.90s}
-.founder-letter.is-writing .line-3{animation-duration:2.6s;animation-delay:5.45s}
-.founder-letter.is-writing .line-4{animation-duration:2.6s;animation-delay:8.00s}
-.founder-letter.is-writing .line-5{animation-duration:2.6s;animation-delay:10.55s}
-.founder-letter.is-writing .line-6{animation-duration:2.6s;animation-delay:13.10s}
-.founder-letter.is-writing .line-7{animation-duration:2.0s;animation-delay:15.70s}
-
-@keyframes revealInk{
-  from{width:100%}
-  to{width:0}
-}
 .letter-typed{
   order:1;
   direction:rtl;
@@ -408,15 +394,6 @@ footer{
 .letter-signature span{
   opacity:0;
   transform:translateY(7px);
-}
-.founder-letter.is-writing .letter-signature span:first-child{
-  animation:signatureWord .7s ease 6.15s forwards;
-}
-.founder-letter.is-writing .letter-signature span:last-child{
-  animation:signatureWord .7s ease 6.8s forwards;
-}
-@keyframes signatureWord{
-  to{opacity:1;transform:none}
 }
 
 @media(max-width:850px){
@@ -465,11 +442,11 @@ footer{
   }
 }
 @media(prefers-reduced-motion:reduce){
-  .write-mask{display:none!important}
-  .letter-handwriting img{
-    opacity:1;
-    clip-path:none;
-    transform:none;
+  .founder-letter-image{
+    opacity:1!important;
+    filter:none!important;
+    transform:none!important;
+    transition:none!important;
   }
   .letter-signature span{
     opacity:1;
