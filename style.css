@@ -339,28 +339,50 @@ footer{
   order:2;
   direction:rtl;
   overflow:hidden;
+  position:relative;
+  background:#fff;
 }
 .letter-handwriting img{
   width:100%;
   height:auto;
   display:block;
-  opacity:1 !important;
-  visibility:visible !important;
-  clip-path:none !important;
-  transform:none !important;
-  animation:none !important;
+  opacity:1;
+  visibility:visible;
+  clip-path:none;
+  transform:none;
 }
-@keyframes handwriteReveal{
-  0%{
-    opacity:1;
-    clip-path:inset(0 0 0 100%);
-    transform:translateX(10px);
-  }
-  100%{
-    opacity:1;
-    clip-path:inset(0 0 0 0);
-    transform:none;
-  }
+.write-mask{
+  display:none;
+  position:absolute;
+  left:0;
+  width:100%;
+  background:#fff;
+  z-index:2;
+  pointer-events:none;
+}
+.js-ready .write-mask{display:block;}
+.write-mask.line-1{top:0;height:17%}
+.write-mask.line-2{top:16%;height:17%}
+.write-mask.line-3{top:32%;height:17%}
+.write-mask.line-4{top:47%;height:17%}
+.write-mask.line-5{top:62%;height:15%}
+.write-mask.line-6{top:76%;height:14%}
+.write-mask.line-7{top:88%;height:12%}
+
+.founder-letter.is-writing .write-mask{
+  animation:revealInk 1s cubic-bezier(.45,.05,.25,1) forwards;
+}
+.founder-letter.is-writing .line-1{animation-duration:1.05s;animation-delay:.15s}
+.founder-letter.is-writing .line-2{animation-duration:1.05s;animation-delay:1.05s}
+.founder-letter.is-writing .line-3{animation-duration:1.05s;animation-delay:1.95s}
+.founder-letter.is-writing .line-4{animation-duration:1.05s;animation-delay:2.9s}
+.founder-letter.is-writing .line-5{animation-duration:1.05s;animation-delay:3.85s}
+.founder-letter.is-writing .line-6{animation-duration:1.05s;animation-delay:4.8s}
+.founder-letter.is-writing .line-7{animation-duration:.9s;animation-delay:5.8s}
+
+@keyframes revealInk{
+  from{width:100%}
+  to{width:0}
 }
 .letter-typed{
   order:1;
@@ -443,6 +465,7 @@ footer{
   }
 }
 @media(prefers-reduced-motion:reduce){
+  .write-mask{display:none!important}
   .letter-handwriting img{
     opacity:1;
     clip-path:none;
