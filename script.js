@@ -19,18 +19,11 @@ document.addEventListener("DOMContentLoaded", () => {
   if (letterSection) {
     const startLetter = () => {
       if (letterSection.classList.contains("is-writing")) return;
-      letterSection.classList.remove("is-writing");
-      void letterSection.offsetWidth;
-      requestAnimationFrame(() => {
-        letterSection.classList.add("is-writing");
-      });
+      requestAnimationFrame(() => letterSection.classList.add("is-writing"));
     };
 
     if (reduce) {
       letterSection.classList.add("is-writing");
-      letterSection.querySelectorAll(".ink-trace").forEach(path => {
-        path.style.strokeDashoffset = "0";
-      });
     } else if ("IntersectionObserver" in window) {
       const letterObserver = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -39,11 +32,11 @@ document.addEventListener("DOMContentLoaded", () => {
             letterObserver.unobserve(entry.target);
           }
         });
-      }, { threshold: .08, rootMargin: "0px 0px -10% 0px" });
+      }, { threshold: .12, rootMargin: "0px 0px -8% 0px" });
       letterObserver.observe(letterSection);
 
       const rect = letterSection.getBoundingClientRect();
-      if (rect.top < window.innerHeight * .92 && rect.bottom > 0) {
+      if (rect.top < window.innerHeight * .9 && rect.bottom > 0) {
         startLetter();
         letterObserver.unobserve(letterSection);
       }
