@@ -344,11 +344,19 @@ footer{
   width:100%;
   height:auto;
   display:block;
+  opacity:1;
+  clip-path:none;
+  transform:none;
+}
+
+/* Hide only after JavaScript has loaded, so the handwriting remains visible
+   even if the script or connection fails. */
+.js-ready .letter-handwriting img{
   opacity:0;
   clip-path:inset(0 0 0 100%);
   transform:translateX(10px);
 }
-.founder-letter.is-writing .letter-handwriting img{
+.js-ready .founder-letter.is-writing .letter-handwriting img{
   animation:handwriteReveal 5.8s cubic-bezier(.22,.61,.36,1) .15s forwards;
 }
 @keyframes handwriteReveal{
