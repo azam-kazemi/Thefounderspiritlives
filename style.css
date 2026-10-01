@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Arabic:wght@600;700&family=Vazirmatn:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600&family=Noto+Serif+Arabic:wght@600;700&family=Vazirmatn:wght@400;500;600&display=swap');
 
 :root{
   --ink:#121212;
@@ -308,4 +308,87 @@ footer{
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .reveal{opacity:1;transform:none}
+}
+
+
+/* Letter from Mahmoud */
+.founder-letter{
+  min-height:100svh;
+  display:grid;
+  place-items:center;
+  background:#fff;
+  padding:72px var(--pad);
+  overflow:hidden;
+}
+.letter-stage{
+  width:min(100%,1180px);
+  margin:0 auto;
+  text-align:center;
+}
+.letter-kicker{
+  margin:0 0 8px;
+  color:#5f7cab;
+  font-size:clamp(.82rem,1.05vw,1rem);
+  font-weight:500;
+  letter-spacing:0;
+}
+.letter-svg{
+  width:100%;
+  height:auto;
+  display:block;
+  margin:0 auto;
+  overflow:visible;
+}
+.letter-ink text{
+  fill:#4d78b7;
+  font-family:"Noto Nastaliq Urdu","Noto Naskh Arabic","Vazirmatn",sans-serif;
+  font-size:78px;
+  font-weight:500;
+}
+.ink-trace{
+  stroke-dasharray:1;
+  stroke-dashoffset:1;
+}
+.founder-letter.is-writing .trace-1{
+  animation:writeTrace 2.35s cubic-bezier(.38,.05,.19,1) forwards;
+}
+.founder-letter.is-writing .trace-2{
+  animation:writeTrace 1.75s cubic-bezier(.38,.05,.19,1) 2.3s forwards;
+}
+.founder-letter.is-writing .trace-3{
+  animation:writeTrace 2.2s cubic-bezier(.38,.05,.19,1) 4s forwards;
+}
+@keyframes writeTrace{
+  to{stroke-dashoffset:0}
+}
+.letter-fallback{
+  display:none;
+}
+
+@media(max-width:850px){
+  .founder-letter{
+    min-height:88svh;
+    padding:56px 5vw 64px;
+  }
+  .letter-stage{
+    width:min(100%,760px);
+  }
+  .letter-kicker{
+    margin-bottom:4px;
+    font-size:.82rem;
+  }
+}
+@media(max-width:520px){
+  .founder-letter{
+    min-height:82svh;
+    padding:42px 4vw 56px;
+  }
+  .letter-svg{
+    width:118%;
+    max-width:none;
+    margin-right:-9%;
+  }
+  .letter-ink text{
+    font-size:72px;
+  }
 }
