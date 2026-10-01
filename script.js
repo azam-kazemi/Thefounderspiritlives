@@ -1,4 +1,6 @@
-document.documentElement.classList.add("js-ready");\n\ndocument.addEventListener("DOMContentLoaded", () => {
+document.documentElement.classList.add("js-ready");
+
+document.addEventListener("DOMContentLoaded", () => {
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const items = document.querySelectorAll(".editorial,.statement,.full-image,.dark-quote");
 
@@ -32,7 +34,8 @@ document.documentElement.classList.add("js-ready");\n\ndocument.addEventListener
             letterObserver.unobserve(entry.target);
           }
         });
-      }, { threshold: .12, rootMargin: "0px 0px -8% 0px" });
+      }, { threshold: .18, rootMargin: "0px 0px -7% 0px" });
+
       letterObserver.observe(letterSection);
 
       const rect = letterSection.getBoundingClientRect();
