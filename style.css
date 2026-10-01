@@ -344,17 +344,11 @@ footer{
   width:100%;
   height:auto;
   display:block;
-  opacity:1;
-  clip-path:none;
-  transform:none;
-}
-.js-ready .letter-handwriting img{
-  opacity:0;
-  clip-path:inset(0 0 0 100%);
-  transform:translateX(10px);
-}
-.js-ready .founder-letter.is-writing .letter-handwriting img{
-  animation:handwriteReveal 5.8s cubic-bezier(.22,.61,.36,1) .15s forwards;
+  opacity:1 !important;
+  visibility:visible !important;
+  clip-path:none !important;
+  transform:none !important;
+  animation:none !important;
 }
 @keyframes handwriteReveal{
   0%{
