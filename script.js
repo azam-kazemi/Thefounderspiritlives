@@ -17,6 +17,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const letterSection = document.querySelector(".founder-letter");
   if (letterSection) {
+    const startLetter = () => {
+      if (letterSection.classList.contains("is-writing")) return;
+      letterSection.classList.remove("is-writing");
+      void letterSection.offsetWidth;
+      requestAnimationFrame(() => {
+        letterSection.classList.add("is-writing");
+      });
+    };
+
     if (reduce) {
       letterSection.classList.add("is-writing");
       letterSection.querySelectorAll(".ink-trace").forEach(path => {
@@ -26,14 +35,20 @@ document.addEventListener("DOMContentLoaded", () => {
       const letterObserver = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("is-writing");
+            startLetter();
             letterObserver.unobserve(entry.target);
           }
         });
-      }, { threshold: .34 });
+      }, { threshold: .08, rootMargin: "0px 0px -10% 0px" });
       letterObserver.observe(letterSection);
+
+      const rect = letterSection.getBoundingClientRect();
+      if (rect.top < window.innerHeight * .92 && rect.bottom > 0) {
+        startLetter();
+        letterObserver.unobserve(letterSection);
+      }
     } else {
-      letterSection.classList.add("is-writing");
+      startLetter();
     }
   }
 
