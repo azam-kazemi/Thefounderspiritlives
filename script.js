@@ -17,34 +17,34 @@ document.addEventListener("DOMContentLoaded", () => {
     items.forEach(el => io.observe(el));
   }
 
-  const letterSection = document.querySelector(".founder-letter");
-  if (letterSection) {
-    const startLetter = () => {
-      if (letterSection.classList.contains("is-writing")) return;
-      requestAnimationFrame(() => letterSection.classList.add("is-writing"));
+  const letterImage = document.querySelector(".founder-letter-image");
+  if (letterImage) {
+    const showLetter = () => {
+      if (letterImage.classList.contains("is-visible")) return;
+      requestAnimationFrame(() => letterImage.classList.add("is-visible"));
     };
 
     if (reduce) {
-      letterSection.classList.add("is-writing");
+      showLetter();
     } else if ("IntersectionObserver" in window) {
       const letterObserver = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            startLetter();
+            showLetter();
             letterObserver.unobserve(entry.target);
           }
         });
-      }, { threshold: .18, rootMargin: "0px 0px -7% 0px" });
+      }, { threshold: .28, rootMargin: "0px 0px -6% 0px" });
 
-      letterObserver.observe(letterSection);
+      letterObserver.observe(letterImage);
 
-      const rect = letterSection.getBoundingClientRect();
+      const rect = letterImage.getBoundingClientRect();
       if (rect.top < window.innerHeight * .9 && rect.bottom > 0) {
-        startLetter();
-        letterObserver.unobserve(letterSection);
+        showLetter();
+        letterObserver.unobserve(letterImage);
       }
     } else {
-      startLetter();
+      showLetter();
     }
   }
 
