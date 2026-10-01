@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600&family=Noto+Serif+Arabic:wght@600;700&family=Vazirmatn:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa+Ink:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;500;600&family=Noto+Serif+Arabic:wght@600;700&family=Vazirmatn:wght@400;500;600&display=swap');
 
 :root{
   --ink:#121212;
@@ -341,9 +341,10 @@ footer{
 }
 .letter-ink text{
   fill:#4d78b7;
-  font-family:"Noto Nastaliq Urdu","Noto Naskh Arabic","Vazirmatn",sans-serif;
-  font-size:78px;
-  font-weight:500;
+  font-family:"Aref Ruqaa Ink","Noto Nastaliq Urdu","Noto Naskh Arabic","Vazirmatn",sans-serif;
+  font-size:66px;
+  font-weight:400;
+  letter-spacing:.01em;
 }
 .ink-trace{
   stroke-dasharray:1;
@@ -389,6 +390,6 @@ footer{
     margin-right:-9%;
   }
   .letter-ink text{
-    font-size:72px;
+    font-size:58px;
   }
 }
