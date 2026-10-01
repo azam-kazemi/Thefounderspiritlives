@@ -342,7 +342,7 @@ footer{
 .letter-ink text{
   fill:#4d78b7;
   font-family:"Aref Ruqaa Ink","Noto Nastaliq Urdu","Noto Naskh Arabic","Vazirmatn",sans-serif;
-  font-size:66px;
+  font-size:52px;
   font-weight:400;
   letter-spacing:.01em;
 }
@@ -390,6 +390,6 @@ footer{
     margin-right:-9%;
   }
   .letter-ink text{
-    font-size:58px;
+    font-size:46px;
   }
 }
