@@ -381,6 +381,7 @@ footer{
   font-size:clamp(1.15rem,1.55vw,1.5rem);
   line-height:2.15;
   font-weight:400;
+  color:#2e2d2b !important;
 }
 .letter-signature{
   margin-top:34px;
