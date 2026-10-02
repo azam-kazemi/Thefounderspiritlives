@@ -187,13 +187,43 @@ a{color:inherit;text-decoration:none}
   color:#2e2d2b;
 }
 
-/* Match rows 3 and 4 typography to row 2 */
+/* Match rows 3 and 4 typography to row 2, with sizes balanced to each row */
 .thought-copy h3,
 .editorial-reverse .copy h2,
 .editorial-reverse .copy h3,
 .editorial-reverse .copy p{
   font-family:"Vazirmatn",Tahoma,Arial,sans-serif;
   font-weight:400;
+}
+
+/* Row 3: long sentence — same visual scale as row 2 */
+.thought-copy h3{
+  margin:0;
+  font-size:clamp(1.3rem,2vw,2rem);
+  line-height:1.7;
+  max-width:560px;
+}
+
+/* Row 4: shorter main title can be a little larger, but not oversized */
+.editorial-reverse .copy h2{
+  margin:0;
+  font-size:clamp(2rem,3.2vw,3.25rem);
+  line-height:1.25;
+  letter-spacing:-0.02em;
+}
+
+/* Row 4 supporting line follows the same scale as row 2 */
+.editorial-reverse .copy h3{
+  margin-top:24px;
+  font-size:clamp(1.3rem,2vw,2rem);
+  line-height:1.7;
+}
+
+/* Row 4 body remains subordinate and readable */
+.editorial-reverse .copy p{
+  margin-top:30px;
+  font-size:clamp(1rem,1.2vw,1.08rem);
+  line-height:2.1;
 }
 .text-link{
   display:inline-block;
@@ -362,6 +392,10 @@ footer{
   .polaroid-bottom{height:55px}
   .copy h2{font-size:3.35rem}
   .copy h3{font-size:1.28rem}
+  .thought-copy h3{font-size:1.28rem}
+  .editorial-reverse .copy h2{font-size:2.15rem}
+  .editorial-reverse .copy h3{font-size:1.28rem}
+  .editorial-reverse .copy p{font-size:1rem}
   footer{flex-direction:column}
 }
 @media(prefers-reduced-motion:reduce){
